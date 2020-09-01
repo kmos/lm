@@ -29,7 +29,6 @@ class SimpleCheckoutTest {
 
         String expectedProduct = "1 book: 12.49\n";
         assertTrue(actualSummary.contains(expectedProduct));
-        //assertEquals(expectedProduct, actualSummary);
     }
 
     @Test

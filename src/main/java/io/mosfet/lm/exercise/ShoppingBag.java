@@ -7,10 +7,6 @@ import java.util.stream.Collectors;
 public class ShoppingBag implements Bag {
     private final Map<Product, Integer> products;
 
-    public ShoppingBag(Map<Product, Integer> product) {
-        this.products = product;
-    }
-
     private ShoppingBag(Builder builder) {
         products = builder.products;
     }
@@ -30,7 +26,7 @@ public class ShoppingBag implements Bag {
         }
 
         public Builder add(Product product) {
-            this.products.put(product, 1);
+            this.products.put(product, products.getOrDefault(product, 0) +1);
             return this;
         }
 
