@@ -10,7 +10,8 @@ class AcceptanceTest {
     @Test
     @DisplayName("given a set of products with one taxed, when getting the summary during checkout process, then return descriptions taxes and total")
     void givenASetProductsWithOneTaxed_whenGettingTheSummaryCheckout_thenReturnDescriptionsTaxesAndTotal() {
-        Checkout checkout = new SimpleCheckout(new ShoppingBag());
+        Product product = new TaxFreeProduct();
+        Checkout checkout = new SimpleCheckout(new ShoppingBag(product));
 
         String actualSummary = checkout.getSummary();
 
