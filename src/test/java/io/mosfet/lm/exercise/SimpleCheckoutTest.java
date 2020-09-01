@@ -3,14 +3,15 @@ package io.mosfet.lm.exercise;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SimpleCheckoutTest {
 
     @Test
     @DisplayName("given an empty bag, when getting the summary, then return a courtesy message")
     void givenAnEmptyBag_whenGettingTheSummary_thenReturnACourtesyMessage() {
-        Checkout checkout = new SimpleCheckout(new ShoppingBag(null));
+        Checkout checkout = new SimpleCheckout(null);
 
         String actualSummary = checkout.getSummary();
 
@@ -19,16 +20,30 @@ class SimpleCheckoutTest {
 
     @Test
     @DisplayName("given a bag with a tax free product, when getting the summary, then return is description and Quantity")
-    void givenABagWithATaxFreeProduct_whenGettingTheSummary_thenReturnIsDescriptionQuantityAndTotal() {
-        Product product = new TaxFreeProduct("book: ", 12.49);
-        Checkout checkout = new SimpleCheckout(new ShoppingBag(product));
+    void givenABagWithATaxFreeProduct_whenGettingTheSummary_thenReturnIsDescriptionAndQuantity() {
+        Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
+                .add(new TaxFreeProduct("book", 12.49))
+                .build());
 
         String actualSummary = checkout.getSummary();
 
-        String expectedSummary =
-                        "1 book : 12.49\n" +
-                        "Sales Taxes: 0\n" +
-                        "Total: 12.49\n";
-        assertEquals(expectedSummary, actualSummary);
+        String expectedProduct = "1 book: 12.49\n";
+        assertTrue(actualSummary.contains(expectedProduct));
+        //assertEquals(expectedProduct, actualSummary);
+    }
+
+    @Test
+    @DisplayName("given a bag with two tax free product, when getting the summary, then return description and Quantity")
+    void givenABagWithTwoTaxFreeProduct_whenGettingTheSummary_thenReturnDescriptionQuantity() {
+        Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
+                .add(new TaxFreeProduct("book", 12.49))
+                .add(new TaxFreeProduct("chocolate bar", 0.85))
+                .build());
+
+        String actualSummary = checkout.getSummary();
+
+        String expectedProducts = "1 book: 12.49\n" +
+                        "1 chocolate bar: 0.85\n";
+        assertTrue(actualSummary.contains(expectedProducts));
     }
 }

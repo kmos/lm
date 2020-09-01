@@ -8,4 +8,9 @@ public class TaxFreeProduct implements Product {
         this.description = description;
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return description + ": " + price;
+    }
 }

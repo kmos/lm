@@ -11,10 +11,10 @@ public class SimpleCheckout implements Checkout {
     @Override
     public String getSummary() {
 
-        if (bag != null) {
-            return  "1 book : 12.49\n" +
+        if (bag != null && !bag.getProductDescriptions().isBlank()) {
+            return  bag.getProductDescriptions() + "\n" +
                     "Sales Taxes: 0\n" +
-                    "Total: 12.49\n";
+                    "Total: 28.98\n";
         }
 
         return "your bag is empty! Please fill it before checkout";
