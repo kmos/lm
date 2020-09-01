@@ -4,6 +4,6 @@ public class SimpleCheckout implements Checkout {
 
     @Override
     public String getSummary() {
-        return null;
+        return "your bag is empty! Please fill it before checkout";
     }
 }
