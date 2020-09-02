@@ -13,7 +13,7 @@ class SimpleCheckoutTest {
     @Test
     @DisplayName("given an empty bag, when getting the summary, then return a courtesy message")
     void givenAnEmptyBag_whenGettingTheSummary_thenReturnACourtesyMessage() {
-        Checkout checkout = new SimpleCheckout(null);
+        Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder().build());
 
         String actualSummary = checkout.getSummary();
 
