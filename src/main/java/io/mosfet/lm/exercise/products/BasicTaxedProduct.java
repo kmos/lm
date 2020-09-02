@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class BasicTaxedProduct implements TaxedProduct {
 
-    public static final double BASIC_TAX = 0.1;
+    public static final BigDecimal BASIC_TAX = BigDecimal.valueOf(0.1);
     private final TaxFreeProduct taxFreeProduct;
 
     public BasicTaxedProduct(TaxFreeProduct taxFreeProduct) {
@@ -17,11 +17,11 @@ public class BasicTaxedProduct implements TaxedProduct {
 
     @Override
     public Money getCost() {
-        return taxFreeProduct.getCost().add(taxFreeProduct.getCost().multiply(BigDecimal.valueOf(BASIC_TAX)));
+        return taxFreeProduct.getCost().add(taxFreeProduct.getCost().multiply(BASIC_TAX));
     }
 
     @Override
     public Money getTaxes() {
-        return Dollar.valueOf(1.59);
+        return taxFreeProduct.getCost().multiply(BasicTaxedProduct.BASIC_TAX);
     }
 }
