@@ -1,16 +1,20 @@
 package io.mosfet.lm.exercise.cash;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Dollar implements Money {
+    private static final int SCALE = 2;
+    private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+
     private final BigDecimal value;
 
     public Dollar(double value) {
         if (value < 0) {
             throw new IllegalArgumentException("negative values are not allowed: " + value);
         }
-        this.value = BigDecimal.valueOf(value);
+        this.value = BigDecimal.valueOf(value).setScale(SCALE, ROUNDING_MODE);
     }
 
     @Override

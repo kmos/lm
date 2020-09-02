@@ -3,7 +3,8 @@ package io.mosfet.lm.exercise.cash;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DollarTest {
 
@@ -32,5 +33,12 @@ class DollarTest {
     @DisplayName("given a negative value, when creating a dollar, throw CashException")
     void givenANegativeValue_whenCreatingADollar_thenThrowNumberFormatException() {
         assertThrows(IllegalArgumentException.class, () -> new Dollar(-1));
+    }
+
+    @Test
+    @DisplayName("given a value with many digits in the right side, when creating a dollar, then truncate it")
+    void givenAValueWithManyDecimals_whenCreatingADollar_thenTruncateIt() {
+        Money actualMoney = new Dollar(1.11111);
+        assertEquals(1.11, actualMoney.asDouble());
     }
 }
