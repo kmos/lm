@@ -1,17 +1,21 @@
 package io.mosfet.lm.exercise.shop;
 
+import java.util.Objects;
+
 public class SimpleCheckout implements Checkout {
 
     private final Bag bag;
 
     public SimpleCheckout(Bag bag) {
+        Objects.requireNonNull(bag);
+
         this.bag = bag;
     }
 
     @Override
     public String getSummary() {
 
-        if (bag != null && !bag.isEmpty()) {
+        if (!bag.isEmpty()) {
             return  bag.getProductDescriptions() + "\n" +
                     "Sales Taxes: 0\n" +
                     "Total: 28.98\n";
