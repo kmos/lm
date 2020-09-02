@@ -11,7 +11,7 @@ public class SimpleCheckout implements Checkout {
     @Override
     public String getSummary() {
 
-        if (bag != null && !bag.getProductDescriptions().isBlank()) {
+        if (bag != null && !bag.isEmpty()) {
             return  bag.getProductDescriptions() + "\n" +
                     "Sales Taxes: 0\n" +
                     "Total: 28.98\n";

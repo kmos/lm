@@ -8,16 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class ShoppingBagTest {
 
     @Test
-    @DisplayName("given a bag with two equal product, when getting product descriptions, return the right quantity")
+    @DisplayName("given a bag with two equal product, when getting an item, return the right quantity and product")
     void givenABagWithSameProduct_whenGettingProductDescriptions_returnTheRightQuantity() {
+        TaxFreeProduct book = new TaxFreeProduct("book", 12.49);
         ShoppingBag shoppingBag = new ShoppingBag.Builder()
-                .add(new TaxFreeProduct("book", 12.49))
-                .add(new TaxFreeProduct("book", 12.49))
+                .add(book)
+                .add(book)
                 .build();
 
-        String productDescriptions = shoppingBag.getProductDescriptions();
+        Item actualItem = shoppingBag.getItem(0);
 
-        String expectedProducts = "2 book:";
-        assertTrue(productDescriptions.contains(expectedProducts));
+        assertEquals(book, actualItem.getProduct());
+        assertEquals(2, actualItem.getQuantity().intValue());
     }
 }

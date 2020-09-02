@@ -1,21 +1,32 @@
 package io.mosfet.lm.exercise;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ShoppingBag implements Bag {
-    private final Map<Product, Integer> products;
+    private final List<Item> products;
 
-    private ShoppingBag(Builder builder) {
-        products = builder.products;
+    private ShoppingBag(List<Item> products) {
+        this.products = products;
     }
 
     @Override
     public String getProductDescriptions() {
-        return products.entrySet().stream()
-                .map(productEntry -> productEntry.getValue() + " " + productEntry.getKey().toString())
+        return products.stream()
+                .map(Item::toString)
                 .collect(Collectors.joining("\n"));
+    }
+
+    @Override
+    public Item getItem(int index) {
+        return products.get(index);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return products.isEmpty();
     }
 
     public static final class Builder {
@@ -31,7 +42,10 @@ public class ShoppingBag implements Bag {
         }
 
         public ShoppingBag build() {
-            return new ShoppingBag(this);
+            return new ShoppingBag(products.entrySet()
+                    .stream()
+                    .map(productEntry -> new Item(productEntry.getKey(), productEntry.getValue()))
+                    .collect(Collectors.toList()));
         }
     }
 }
