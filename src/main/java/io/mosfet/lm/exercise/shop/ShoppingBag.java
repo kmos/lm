@@ -37,7 +37,7 @@ public class ShoppingBag implements Bag {
     @Override
     public Money getTotal() {
         return products.stream()
-                .map(item -> item.getProduct().getCost().multiply(item.getQuantity()))
+                .map(Item::getTotal)
                 .reduce(new Dollar(BigDecimal.ZERO), Money::add);
     }
 

@@ -1,5 +1,6 @@
 package io.mosfet.lm.exercise.shop;
 
+import io.mosfet.lm.exercise.cash.Money;
 import io.mosfet.lm.exercise.products.Product;
 
 public class Item {
@@ -22,5 +23,9 @@ public class Item {
     @Override
     public String toString() {
         return quantity + " " + product.toString();
+    }
+
+    public Money getTotal() {
+        return product.getCost().multiply(quantity);
     }
 }
