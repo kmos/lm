@@ -1,6 +1,7 @@
 package io.mosfet.lm.exercise;
 
 import io.mosfet.lm.exercise.cash.Dollar;
+import io.mosfet.lm.exercise.products.BasicTaxedProduct;
 import io.mosfet.lm.exercise.products.TaxFreeProduct;
 import io.mosfet.lm.exercise.shop.Checkout;
 import io.mosfet.lm.exercise.shop.ShoppingBag;
@@ -17,7 +18,7 @@ class AcceptanceTest {
     void givenASetProductsWithOneTaxed_whenGettingTheSummaryCheckout_thenReturnDescriptionsTaxesAndTotal() {
         Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
                 .add(new TaxFreeProduct("book", Dollar.valueOf(12.49)))
-                .add(new TaxFreeProduct("music CD", Dollar.valueOf(16.49)))
+                .add(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(14.49))))
                 .add(new TaxFreeProduct("chocolate bar", Dollar.valueOf(0.85)))
                 .build());
 
