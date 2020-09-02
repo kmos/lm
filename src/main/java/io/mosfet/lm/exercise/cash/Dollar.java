@@ -17,6 +17,13 @@ public class Dollar implements Money {
         this.value = BigDecimal.valueOf(value).setScale(SCALE, ROUNDING_MODE);
     }
 
+    public Dollar(BigDecimal value) {
+        if (value.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("negative values are not allowed: " + value);
+        }
+        this.value = value.setScale(SCALE, ROUNDING_MODE);
+    }
+
     @Override
     public double asDouble() {
         return value.doubleValue();
@@ -24,7 +31,12 @@ public class Dollar implements Money {
 
     @Override
     public Money add(Money money) {
-        return new Dollar(2.16);
+        return new Dollar(this.value.add(money.asBigDecimal()));
+    }
+
+    @Override
+    public BigDecimal asBigDecimal() {
+        return value;
     }
 
     @Override

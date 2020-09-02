@@ -60,6 +60,13 @@ class DollarTest {
     @DisplayName("given two different dollars, when doing the sum, then return the result of the addition")
     void givenTwoDifferentDollars_whenDoingTheSum_thenReturnTheResultOfTheSum() {
         Money actualSum = new Dollar(1.11).add(new Dollar(1.15));
-        assertEquals(new Dollar(2.16), actualSum);
+        assertEquals(new Dollar(2.26), actualSum);
+    }
+
+    @Test
+    @DisplayName("given two different dollars, when doing the sum, then return the result of the addition")
+    void givenTwoDifferentValueDollars_whenDoingTheSum_thenReturnTheResultOfTheSum() {
+        Money actualSum = new Dollar(1.15).add(new Dollar(1.15));
+        assertEquals(new Dollar(2.30), actualSum);
     }
 }
