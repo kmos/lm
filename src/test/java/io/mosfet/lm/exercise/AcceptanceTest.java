@@ -18,7 +18,7 @@ class AcceptanceTest {
     void givenASetProductsWithOneTaxed_whenGettingTheSummaryCheckout_thenReturnDescriptionsTaxesAndTotal() {
         Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
                 .add(new TaxFreeProduct("book", Dollar.valueOf(12.49)))
-                .add(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(14.49))))
+                .add(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(14.99))))
                 .add(new TaxFreeProduct("chocolate bar", Dollar.valueOf(0.85)))
                 .build());
 
@@ -29,7 +29,7 @@ class AcceptanceTest {
                 "1 music CD: 16.49\n" +
                 "1 chocolate bar: 0.85\n" +
                 "Sales Taxes: 1.50\n" +
-                "Total: 29.83\n";
+                "Total: 29.83";
         assertEquals(expectedSummary, actualSummary);
 
     }

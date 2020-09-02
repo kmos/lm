@@ -49,13 +49,13 @@ class BasicTaxedProductTest {
     @DisplayName("given a basi taxed product like music cd, when getting toString, then return it correctly")
     void givenBasicTaxedProductLikeMusicCD_whenGettingToString_thenReturnItFormatted() {
         TaxedProduct actualTaxedProduct = new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(15.99)));
-        assertEquals("music CD: 15.99", actualTaxedProduct.toString());
+        assertEquals("music CD: 17.59", actualTaxedProduct.toString());
     }
 
     @Test
     @DisplayName("given a basi taxed product like pills, when getting toString, then return it correctly")
     void givenBasicTaxedProductLikePills_whenGettingToString_thenReturnItFormatted() {
         TaxedProduct actualTaxedProduct = new BasicTaxedProduct(new TaxFreeProduct("pills", Dollar.valueOf(11.99)));
-        assertEquals("pills: 11.99", actualTaxedProduct.toString());
+        assertEquals("pills: 13.19", actualTaxedProduct.toString());
     }
 }

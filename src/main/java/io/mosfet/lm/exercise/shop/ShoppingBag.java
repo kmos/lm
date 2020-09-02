@@ -47,7 +47,7 @@ public class ShoppingBag implements Bag {
         return products.stream()
                 .map(item -> item.getTaxes()
                         .orElseGet(() -> new Dollar(BigDecimal.ZERO)))
-                .reduce(new Dollar(BigDecimal.ZERO), Money::add);
+                .reduce(new Dollar(BigDecimal.ZERO), Money::add).getRoundingTo5Cents();
     }
 
     public static final class Builder {

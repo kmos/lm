@@ -79,7 +79,7 @@ class SimpleCheckoutTest {
 
         String actualSummary = checkout.getSummary();
 
-        String expectedTaxes = "Sales Taxes: 3.14";
+        String expectedTaxes = "Sales Taxes: 3.15";
         assertTrue(actualSummary.contains(expectedTaxes));
     }
 }

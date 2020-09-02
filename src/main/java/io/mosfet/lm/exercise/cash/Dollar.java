@@ -34,7 +34,7 @@ public class Dollar implements Money {
 
     @Override
     public String toString() {
-        return value.stripTrailingZeros().toPlainString();
+        return value.toPlainString();
     }
 
     @Override

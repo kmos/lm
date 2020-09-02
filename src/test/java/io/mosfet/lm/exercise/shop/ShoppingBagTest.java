@@ -186,7 +186,7 @@ class ShoppingBagTest {
 
             Money actualTotalTaxes = shoppingBag.getTotalTaxes();
 
-            assertEquals(Dollar.valueOf(0.66), actualTotalTaxes);
+            assertEquals(Dollar.valueOf(0.70), actualTotalTaxes);
         }
 
         @Test
@@ -210,7 +210,7 @@ class ShoppingBagTest {
 
             Money actualTotalTaxes = shoppingBag.getTotalTaxes();
 
-            assertEquals(Dollar.valueOf(0.78), actualTotalTaxes);
+            assertEquals(Dollar.valueOf(0.80), actualTotalTaxes);
         }
 
     }
