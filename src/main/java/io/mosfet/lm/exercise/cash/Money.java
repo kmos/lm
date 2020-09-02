@@ -1,5 +1,5 @@
 package io.mosfet.lm.exercise.cash;
 
 public interface Money {
-    double get();
+    double asDouble();
 }

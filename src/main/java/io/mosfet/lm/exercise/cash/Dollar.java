@@ -14,7 +14,7 @@ public class Dollar implements Money {
     }
 
     @Override
-    public double get() {
+    public double asDouble() {
         return value.doubleValue();
     }
 

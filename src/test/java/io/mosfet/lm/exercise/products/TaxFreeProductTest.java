@@ -15,7 +15,7 @@ class TaxFreeProductTest {
         Product product = new TaxFreeProduct("book", new Dollar(1.01));
         Money actualMoney = product.getCost();
 
-        assertEquals(1.01, actualMoney.get());
+        assertEquals(1.01, actualMoney.asDouble());
     }
 
     @Test

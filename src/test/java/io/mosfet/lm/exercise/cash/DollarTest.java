@@ -11,21 +11,21 @@ class DollarTest {
     @DisplayName("given one dollar, when getting the value, then return it correctly")
     void givenOneDollar_whenGettingTheValue_thenReturnItCorrectly() {
         Money actualMoney = new Dollar(1);
-        assertEquals(1, actualMoney.get());
+        assertEquals(1, actualMoney.asDouble());
     }
 
     @Test
     @DisplayName("given zero dollar, when getting the value, then return it correctly")
     void givenZeroDollar_whenGettingTheValue_thenReturnItCorrectly() {
         Money actualMoney = new Dollar(0);
-        assertEquals(0, actualMoney.get());
+        assertEquals(0, actualMoney.asDouble());
     }
 
     @Test
     @DisplayName("given 1.1 dollar, when getting the value, then return it correctly")
     void givenOneDotOneDollar_whenGettingTheValue_thenReturnItCorrectly() {
         Money actualMoney = new Dollar(1.1);
-        assertEquals(1.1, actualMoney.get());
+        assertEquals(1.1, actualMoney.asDouble());
     }
 
     @Test
