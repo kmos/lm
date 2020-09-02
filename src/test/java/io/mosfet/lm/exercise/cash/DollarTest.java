@@ -36,9 +36,23 @@ class DollarTest {
     }
 
     @Test
-    @DisplayName("given a value with many digits in the right side, when creating a dollar, then truncate it")
-    void givenAValueWithManyDecimals_whenCreatingADollar_thenTruncateIt() {
+    @DisplayName("given a value with some digits in the right side, when creating a dollar, then truncate it")
+    void givenAValueWithSomeRightDigits_whenCreatingADollar_thenTruncateIt() {
         Money actualMoney = new Dollar(1.11111);
+        assertEquals(1.11, actualMoney.asDouble());
+    }
+
+    @Test
+    @DisplayName("given a value with some digits in the right side, when creating a dollar, truncate it and round it")
+    void givenAValueWithSomeRightDigits_whenCreatingADollar_thenTruncateItAndRound() {
+        Money actualMoney = new Dollar(1.11511);
+        assertEquals(1.12, actualMoney.asDouble());
+    }
+
+    @Test
+    @DisplayName("given a value with some digits in the right side, when creating a dollar, truncate it without rounding")
+    void givenAValueWithSomeRightDigits_whenCreatingADollar_thenTruncateItWithoutRounding() {
+        Money actualMoney = new Dollar(1.11411);
         assertEquals(1.11, actualMoney.asDouble());
     }
 }
