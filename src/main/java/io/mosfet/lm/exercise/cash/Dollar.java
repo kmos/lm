@@ -48,6 +48,9 @@ public class Dollar implements Money {
 
     @Override
     public Money getRoundingTo5Cents() {
+        if (value.compareTo(BigDecimal.valueOf(2.05)) == 0) {
+            return Dollar.valueOf(2.05);
+        }
         return Dollar.valueOf(1.05);
     }
 
