@@ -11,7 +11,6 @@ public class BasicTaxedProduct implements TaxedProduct {
     private final TaxFreeProduct taxFreeProduct;
 
     public BasicTaxedProduct(TaxFreeProduct taxFreeProduct) {
-
         this.taxFreeProduct = taxFreeProduct;
     }
 
