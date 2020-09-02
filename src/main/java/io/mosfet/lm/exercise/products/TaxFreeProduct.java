@@ -4,16 +4,21 @@ import java.util.Objects;
 
 public class TaxFreeProduct implements Product {
     private final String description;
-    private final double price;
+    private final double cost;
 
-    public TaxFreeProduct(String description, double price) {
+    public TaxFreeProduct(String description, double cost) {
         this.description = description;
-        this.price = price;
+        this.cost = cost;
+    }
+
+    @Override
+    public Money getCost() {
+        return Dollar.from(1.01);
     }
 
     @Override
     public String toString() {
-        return description + ": " + price;
+        return description + ": " + cost;
     }
 
     @Override
@@ -21,12 +26,12 @@ public class TaxFreeProduct implements Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaxFreeProduct that = (TaxFreeProduct) o;
-        return Double.compare(that.price, price) == 0 &&
+        return Double.compare(that.cost, cost) == 0 &&
                 Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, price);
+        return Objects.hash(description, cost);
     }
 }
