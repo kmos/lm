@@ -38,7 +38,12 @@ public class Dollar implements Money {
 
     @Override
     public Money multiply(Integer value) {
-        return new Dollar(this.value.multiply(BigDecimal.valueOf(value)));
+        return multiply(BigDecimal.valueOf(value));
+    }
+
+    @Override
+    public Money multiply(BigDecimal value) {
+        return new Dollar(this.value.multiply(value));
     }
 
     @Override

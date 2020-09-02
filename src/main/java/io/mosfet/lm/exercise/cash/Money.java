@@ -11,4 +11,6 @@ public interface Money {
     BigDecimal asBigDecimal();
 
     Money multiply(Integer value);
+
+    Money multiply(BigDecimal value);
 }
