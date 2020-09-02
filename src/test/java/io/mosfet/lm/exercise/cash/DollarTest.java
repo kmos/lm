@@ -106,12 +106,22 @@ class DollarTest {
 
         @Test
         @DisplayName("given 2.05 dollar, when asking for rounding, then return not rounded")
-        void given2dot05Dollar_whenAskingForRounding_thenReturnItRounded() {
+        void given2dot05Dollar_whenAskingForRounding_thenReturnItNotRounded() {
             Money money = Dollar.valueOf(2.05);
 
             Money actualMoney = money.getRoundingTo5Cents();
 
             assertEquals(Dollar.valueOf(2.05), actualMoney);
+        }
+
+        @Test
+        @DisplayName("given 1.09 dollar, when asking for rounding, then return it rounded")
+        void given1dot09Dollar_whenAskingForRounding_thenReturnItRounded() {
+            Money money = Dollar.valueOf(1.09);
+
+            Money actualMoney = money.getRoundingTo5Cents();
+
+            assertEquals(Dollar.valueOf(1.10), actualMoney);
         }
     }
 
