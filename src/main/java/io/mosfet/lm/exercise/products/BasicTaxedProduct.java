@@ -1,6 +1,5 @@
 package io.mosfet.lm.exercise.products;
 
-import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.cash.Money;
 
 import java.math.BigDecimal;
@@ -22,5 +21,10 @@ public class BasicTaxedProduct implements TaxedProduct {
     @Override
     public Money getTaxes() {
         return taxFreeProduct.getCost().multiply(BasicTaxedProduct.BASIC_TAX);
+    }
+
+    @Override
+    public String toString() {
+        return "music CD: 15.99";
     }
 }
