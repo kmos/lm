@@ -22,7 +22,7 @@ public class Dollar implements Money {
     }
 
     @Override
-    public double asDouble() {
+    public double doubleValue() {
         return value.doubleValue();
     }
 

@@ -24,7 +24,7 @@ public class TaxFreeProduct implements Product {
 
     @Override
     public String toString() {
-        return description + ": " + cost.asDouble();
+        return description + ": " + cost.doubleValue();
     }
 
     @Override

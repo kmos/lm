@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public interface Money {
 
-    double asDouble();
+    double doubleValue();
 
     Money add(Money money);
 
