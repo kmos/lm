@@ -1,4 +1,4 @@
-package io.mosfet.lm.exercise.products;
+package io.mosfet.lm.exercise.cash;
 
 public interface Money {
     double get();

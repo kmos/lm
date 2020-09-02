@@ -1,5 +1,8 @@
 package io.mosfet.lm.exercise.products;
 
+import io.mosfet.lm.exercise.cash.Dollar;
+import io.mosfet.lm.exercise.cash.Money;
+
 import java.util.Objects;
 
 public class TaxFreeProduct implements Product {

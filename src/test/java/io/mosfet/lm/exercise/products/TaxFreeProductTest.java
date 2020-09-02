@@ -1,5 +1,6 @@
 package io.mosfet.lm.exercise.products;
 
+import io.mosfet.lm.exercise.cash.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
