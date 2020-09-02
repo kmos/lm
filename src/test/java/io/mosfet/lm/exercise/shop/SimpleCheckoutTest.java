@@ -1,24 +1,21 @@
 package io.mosfet.lm.exercise.shop;
 
 import io.mosfet.lm.exercise.cash.Dollar;
+import io.mosfet.lm.exercise.exception.CheckoutException;
 import io.mosfet.lm.exercise.products.BasicTaxedProduct;
 import io.mosfet.lm.exercise.products.TaxFreeProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleCheckoutTest {
 
     @Test
-    @DisplayName("given an empty bag, when getting the summary, then return a courtesy message")
-    void givenAnEmptyBag_whenGettingTheSummary_thenReturnACourtesyMessage() {
+    @DisplayName("given an empty bag, when getting the summary, then throw exception")
+    void givenAnEmptyBag_whenGettingTheSummary_thenThrowCheckoutException() {
         Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder().build());
-
-        String actualSummary = checkout.getSummary();
-
-        assertEquals("your bag is empty! Please fill it before checkout", actualSummary);
+        assertThrows(CheckoutException.class, checkout::getSummary);
     }
 
     @Test
