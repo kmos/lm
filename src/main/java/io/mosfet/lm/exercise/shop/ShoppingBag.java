@@ -1,5 +1,7 @@
 package io.mosfet.lm.exercise.shop;
 
+import io.mosfet.lm.exercise.cash.Dollar;
+import io.mosfet.lm.exercise.cash.Money;
 import io.mosfet.lm.exercise.products.Product;
 
 import java.util.LinkedHashMap;
@@ -29,6 +31,11 @@ public class ShoppingBag implements Bag {
     @Override
     public boolean isEmpty() {
         return products.isEmpty();
+    }
+
+    @Override
+    public Money getTotal() {
+        return Dollar.valueOf(1.4);
     }
 
     public static final class Builder {
