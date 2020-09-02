@@ -10,18 +10,15 @@ public class Dollar implements Money {
 
     private final BigDecimal value;
 
-    public Dollar(double value) {
-        if (value < 0) {
-            throw new IllegalArgumentException("negative values are not allowed: " + value);
-        }
-        this.value = BigDecimal.valueOf(value).setScale(SCALE, ROUNDING_MODE);
-    }
-
     public Dollar(BigDecimal value) {
         if (value.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("negative values are not allowed: " + value);
         }
         this.value = value.setScale(SCALE, ROUNDING_MODE);
+    }
+
+    public static Money valueOf(double value) {
+        return new Dollar(BigDecimal.valueOf(value).setScale(SCALE, ROUNDING_MODE));
     }
 
     @Override
@@ -30,13 +27,13 @@ public class Dollar implements Money {
     }
 
     @Override
-    public Money add(Money money) {
-        return new Dollar(this.value.add(money.asBigDecimal()));
+    public BigDecimal asBigDecimal() {
+        return value;
     }
 
     @Override
-    public BigDecimal asBigDecimal() {
-        return value;
+    public Money add(Money money) {
+        return new Dollar(this.value.add(money.asBigDecimal()));
     }
 
     @Override

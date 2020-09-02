@@ -16,9 +16,9 @@ class AcceptanceTest {
     @DisplayName("given a set of products with one taxed, when getting the summary during checkout process, then return descriptions taxes and total")
     void givenASetProductsWithOneTaxed_whenGettingTheSummaryCheckout_thenReturnDescriptionsTaxesAndTotal() {
         Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
-                .add(new TaxFreeProduct("book", new Dollar(12.49)))
-                .add(new TaxFreeProduct("music CD", new Dollar(16.49)))
-                .add(new TaxFreeProduct("chocolate bar", new Dollar(0.85)))
+                .add(new TaxFreeProduct("book", Dollar.valueOf(12.49)))
+                .add(new TaxFreeProduct("music CD", Dollar.valueOf(16.49)))
+                .add(new TaxFreeProduct("chocolate bar", Dollar.valueOf(0.85)))
                 .build());
 
         String actualSummary = checkout.getSummary();

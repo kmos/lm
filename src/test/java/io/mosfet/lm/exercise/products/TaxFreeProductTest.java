@@ -12,7 +12,7 @@ class TaxFreeProductTest {
     @Test
     @DisplayName("given a product, when getting the cost, return it correctly")
     void givenProduct_whenGettingCost_returnItCorrectly() {
-        Product product = new TaxFreeProduct("book", new Dollar(1.01));
+        Product product = new TaxFreeProduct("book", Dollar.valueOf(1.01));
         Money actualMoney = product.getCost();
 
         assertEquals(1.01, actualMoney.asDouble());
