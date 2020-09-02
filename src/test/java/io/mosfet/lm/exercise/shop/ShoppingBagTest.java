@@ -1,5 +1,6 @@
 package io.mosfet.lm.exercise.shop;
 
+import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.products.TaxFreeProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ class ShoppingBagTest {
     @Test
     @DisplayName("given a bag with two equal product, when getting an item, return the right quantity and product")
     void givenABagWithSameProduct_whenGettingAnItem_returnTheRightQuantity() {
-        TaxFreeProduct book = new TaxFreeProduct("book", 12.49);
+        TaxFreeProduct book = new TaxFreeProduct("book", new Dollar(12.49));
         ShoppingBag shoppingBag = new ShoppingBag.Builder()
                 .add(book)
                 .add(book)
@@ -27,8 +28,8 @@ class ShoppingBagTest {
     @Test
     @DisplayName("given a bag with some products, when getting related items, return the right quantity and product")
     void givenABagWithSomeProduct_whenGettingThem_returnTheRightQuantity() {
-        TaxFreeProduct book = new TaxFreeProduct("book", 12.49);
-        TaxFreeProduct chocolateBar = new TaxFreeProduct("chocolate bar", 0.85);
+        TaxFreeProduct book = new TaxFreeProduct("book", new Dollar(12.49));
+        TaxFreeProduct chocolateBar = new TaxFreeProduct("chocolate bar", new Dollar(0.85));
         ShoppingBag shoppingBag = new ShoppingBag.Builder()
                 .add(book)
                 .add(book)

@@ -1,5 +1,6 @@
 package io.mosfet.lm.exercise.shop;
 
+import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.products.TaxFreeProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ class SimpleCheckoutTest {
     @DisplayName("given a bag with a tax free product, when getting the summary, then return is description and Quantity")
     void givenABagWithATaxFreeProduct_whenGettingTheSummary_thenReturnIsDescriptionAndQuantity() {
         Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
-                .add(new TaxFreeProduct("book", 12.49))
+                .add(new TaxFreeProduct("book", new Dollar(12.49)))
                 .build());
 
         String actualSummary = checkout.getSummary();
@@ -36,8 +37,8 @@ class SimpleCheckoutTest {
     @DisplayName("given a bag with two tax free product, when getting the summary, then return description and Quantity")
     void givenABagWithTwoTaxFreeProduct_whenGettingTheSummary_thenReturnDescriptionQuantity() {
         Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
-                .add(new TaxFreeProduct("book", 12.49))
-                .add(new TaxFreeProduct("chocolate bar", 0.85))
+                .add(new TaxFreeProduct("book", new Dollar(12.49)))
+                .add(new TaxFreeProduct("chocolate bar", new Dollar(0.85)))
                 .build());
 
         String actualSummary = checkout.getSummary();

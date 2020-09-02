@@ -1,27 +1,26 @@
 package io.mosfet.lm.exercise.products;
 
-import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.cash.Money;
 
 import java.util.Objects;
 
 public class TaxFreeProduct implements Product {
     private final String description;
-    private final double cost;
+    private final Money cost;
 
-    public TaxFreeProduct(String description, double cost) {
+    public TaxFreeProduct(String description, Money cost) {
         this.description = description;
         this.cost = cost;
     }
 
     @Override
     public Money getCost() {
-        return Dollar.from(1.01);
+        return this.cost;
     }
 
     @Override
     public String toString() {
-        return description + ": " + cost;
+        return description + ": " + cost.get();
     }
 
     @Override
@@ -29,8 +28,8 @@ public class TaxFreeProduct implements Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaxFreeProduct that = (TaxFreeProduct) o;
-        return Double.compare(that.cost, cost) == 0 &&
-                Objects.equals(description, that.description);
+        return Objects.equals(description, that.description) &&
+                Objects.equals(cost, that.cost);
     }
 
     @Override
