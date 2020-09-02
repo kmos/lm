@@ -23,6 +23,11 @@ public class TaxFreeProduct implements Product {
     }
 
     @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
     public String toString() {
         return description + ": " + cost.doubleValue();
     }
