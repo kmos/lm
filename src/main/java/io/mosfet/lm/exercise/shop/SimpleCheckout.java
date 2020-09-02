@@ -21,7 +21,6 @@ public class SimpleCheckout implements Checkout {
         return  bag.getProductDescriptions() + "\n" +
                 "Sales Taxes: " + bag.getTotalTaxes().toString() + "\n" +
                 "Total: " + bag.getTotal().toString();
-
     }
 
     private void validate() {
