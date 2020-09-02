@@ -9,6 +9,10 @@ public class TaxFreeProduct implements Product {
     private final Money cost;
 
     public TaxFreeProduct(String description, Money cost) {
+
+        Objects.requireNonNull(description);
+        Objects.requireNonNull(cost);
+
         this.description = description;
         this.cost = cost;
     }

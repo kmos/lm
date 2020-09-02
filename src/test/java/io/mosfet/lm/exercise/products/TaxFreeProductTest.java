@@ -17,4 +17,10 @@ class TaxFreeProductTest {
 
         assertEquals(1.01, actualMoney.get());
     }
+
+    @Test
+    @DisplayName("given null parameters, when creating a product, return a NullPointerException")
+    void givenNullValue_whenCreatingAProduct_returnANullPointerException() {
+        assertThrows(NullPointerException.class, () -> new TaxFreeProduct(null, null));
+    }
 }
