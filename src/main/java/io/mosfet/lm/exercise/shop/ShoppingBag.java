@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ShoppingBag implements Bag {
@@ -38,6 +39,14 @@ public class ShoppingBag implements Bag {
     public Money getTotal() {
         return products.stream()
                 .map(Item::getTotal)
+                .reduce(new Dollar(BigDecimal.ZERO), Money::add);
+    }
+
+    @Override
+    public Money getTotalTaxes() {
+        return products.stream()
+                .map(item -> item.getTaxes()
+                        .orElseGet(() -> new Dollar(BigDecimal.ZERO)))
                 .reduce(new Dollar(BigDecimal.ZERO), Money::add);
     }
 

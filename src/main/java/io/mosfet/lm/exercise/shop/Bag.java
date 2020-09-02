@@ -10,4 +10,6 @@ public interface Bag {
     boolean isEmpty();
 
     Money getTotal();
+
+    Money getTotalTaxes();
 }

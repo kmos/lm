@@ -2,6 +2,7 @@ package io.mosfet.lm.exercise.shop;
 
 import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.cash.Money;
+import io.mosfet.lm.exercise.products.BasicTaxedProduct;
 import io.mosfet.lm.exercise.products.TaxFreeProduct;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -161,4 +162,56 @@ class ShoppingBagTest {
 
     }
 
+    @Nested
+    @DisplayName("when getting the taxes")
+    class WhenGettingTheTaxes {
+
+        @Test
+        @DisplayName("given a bag with some products, when getting the taxes, then return the sum of all taxes")
+        void givenABagWithSomeProducts_WhenGettingTheTaxes_returnTheSumOfAllTaxes() {
+            Bag shoppingBag = new ShoppingBag.Builder()
+                    .add(new TaxFreeProduct("book", Dollar.valueOf(1.3)))
+                    .add(new TaxFreeProduct("book", Dollar.valueOf(1.3)))
+                    .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.5)))
+                    .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.5)))
+                    .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.5)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("perfume", Dollar.valueOf(1.2))))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(2.2))))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("pills", Dollar.valueOf(3.2))))
+                    .build();
+
+            Money actualTotalTaxes = shoppingBag.getTotalTaxes();
+
+            assertEquals(Dollar.valueOf(0.66), actualTotalTaxes);
+        }
+
+        @Test
+        @DisplayName("given a bag with some repeated taxed products, when getting the taxes, then return the sum of all taxes")
+        void givenABagWithSomeRepeatedTaxedProducts_WhenGettingTheTaxes_returnTheRightValue() {
+            Bag shoppingBag = new ShoppingBag.Builder()
+                    .add(new TaxFreeProduct("book", Dollar.valueOf(1.3)))
+                    .add(new TaxFreeProduct("book", Dollar.valueOf(1.3)))
+                    .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.5)))
+                    .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.5)))
+                    .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.5)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("perfume", Dollar.valueOf(1.2))))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("perfume", Dollar.valueOf(1.2))))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(2.2))))
+                    .add(new BasicTaxedProduct(new TaxFreeProduct("pills", Dollar.valueOf(3.2))))
+                    .build();
+
+            Money actualTotalTaxes = shoppingBag.getTotalTaxes();
+
+            assertEquals(Dollar.valueOf(0.78), actualTotalTaxes);
+        }
+
+    }
 }
