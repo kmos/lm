@@ -76,6 +76,36 @@ class ShoppingBagTest {
 
         Money actualTotal = shoppingBag.getTotal();
 
-        assertEquals(Dollar.valueOf(1.4), actualTotal);
+        assertEquals(Dollar.valueOf(2.4), actualTotal);
     }
+
+    @Test
+    @DisplayName("given a bag with three different products, when getting the total, return the right sum of them")
+    void givenABagWithThreeProducts_whenGettingTheTotal_returnTheRightValue() {
+        Bag shoppingBag = new ShoppingBag.Builder()
+                .add(new TaxFreeProduct("book", Dollar.valueOf(1.1)))
+                .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.3)))
+                .add(new TaxFreeProduct("milk", Dollar.valueOf(1.5)))
+                .build();
+
+        Money actualTotal = shoppingBag.getTotal();
+
+        assertEquals(Dollar.valueOf(3.9), actualTotal);
+    }
+
+    @Test
+    @DisplayName("given a bag with four different products, when getting the total, return the right sum of them")
+    void givenABagWithFourProducts_whenGettingTheTotal_returnTheRightValue() {
+        Bag shoppingBag = new ShoppingBag.Builder()
+                .add(new TaxFreeProduct("book", Dollar.valueOf(1.1)))
+                .add(new TaxFreeProduct("chocolate", Dollar.valueOf(1.3)))
+                .add(new TaxFreeProduct("milk", Dollar.valueOf(1.5)))
+                .add(new TaxFreeProduct("potato", Dollar.valueOf(1.2)))
+                .build();
+
+        Money actualTotal = shoppingBag.getTotal();
+
+        assertEquals(Dollar.valueOf(5.1), actualTotal);
+    }
+
 }

@@ -4,6 +4,7 @@ import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.cash.Money;
 import io.mosfet.lm.exercise.products.Product;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,9 @@ public class ShoppingBag implements Bag {
 
     @Override
     public Money getTotal() {
-        return Dollar.valueOf(1.4);
+        return products.stream()
+                .map(item -> item.getProduct().getCost())
+                .reduce(new Dollar(BigDecimal.ZERO), Money::add);
     }
 
     public static final class Builder {
