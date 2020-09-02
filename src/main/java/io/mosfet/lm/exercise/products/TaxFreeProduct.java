@@ -1,4 +1,4 @@
-package io.mosfet.lm.exercise;
+package io.mosfet.lm.exercise.products;
 
 import java.util.Objects;
 

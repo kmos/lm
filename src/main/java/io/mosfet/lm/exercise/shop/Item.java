@@ -1,4 +1,6 @@
-package io.mosfet.lm.exercise;
+package io.mosfet.lm.exercise.shop;
+
+import io.mosfet.lm.exercise.products.Product;
 
 public class Item {
     private final Product product;

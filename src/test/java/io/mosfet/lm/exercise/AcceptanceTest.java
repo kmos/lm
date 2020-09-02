@@ -1,5 +1,9 @@
 package io.mosfet.lm.exercise;
 
+import io.mosfet.lm.exercise.products.TaxFreeProduct;
+import io.mosfet.lm.exercise.shop.Checkout;
+import io.mosfet.lm.exercise.shop.ShoppingBag;
+import io.mosfet.lm.exercise.shop.SimpleCheckout;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
