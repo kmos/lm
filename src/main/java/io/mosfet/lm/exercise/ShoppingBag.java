@@ -37,13 +37,14 @@ public class ShoppingBag implements Bag {
         }
 
         public Builder add(Product product) {
-            this.products.put(product, products.getOrDefault(product, 0) +1);
+            this.products.put(product, products.getOrDefault(product, 0)+ 1);
             return this;
         }
 
         public ShoppingBag build() {
             return new ShoppingBag(products.entrySet()
                     .stream()
+                    .filter(productEntry -> productEntry.getKey() != null)
                     .map(productEntry -> new Item(productEntry.getKey(), productEntry.getValue()))
                     .collect(Collectors.toList()));
         }
