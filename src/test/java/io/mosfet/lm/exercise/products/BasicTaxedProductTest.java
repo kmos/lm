@@ -51,4 +51,11 @@ class BasicTaxedProductTest {
         TaxedProduct actualTaxedProduct = new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(15.99)));
         assertEquals("music CD: 15.99", actualTaxedProduct.toString());
     }
+
+    @Test
+    @DisplayName("given a basi taxed product like pills, when getting toString, then return it correctly")
+    void givenBasicTaxedProductLikePills_whenGettingToString_thenReturnItFormatted() {
+        TaxedProduct actualTaxedProduct = new BasicTaxedProduct(new TaxFreeProduct("pills", Dollar.valueOf(11.99)));
+        assertEquals("pills: 11.99", actualTaxedProduct.toString());
+    }
 }

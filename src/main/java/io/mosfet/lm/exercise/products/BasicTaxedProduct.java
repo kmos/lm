@@ -30,6 +30,6 @@ public class BasicTaxedProduct implements TaxedProduct {
 
     @Override
     public String toString() {
-        return "music CD: 15.99";
+        return product.getDescription() + ": " + product.getCost().toString();
     }
 }
