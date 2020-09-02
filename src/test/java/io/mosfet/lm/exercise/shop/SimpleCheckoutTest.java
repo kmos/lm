@@ -47,4 +47,22 @@ class SimpleCheckoutTest {
                         "1 chocolate bar: 0.85\n";
         assertTrue(actualSummary.contains(expectedProducts));
     }
+
+    @Test
+    @DisplayName("given a bag with two tax free product, when getting the summary, then return description, Quantity and Total")
+    void givenABagWithTwoTaxFreeProduct_whenGettingTheSummary_thenReturnDescriptionQuantityAndTotal() {
+        Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
+                .add(new TaxFreeProduct("book", Dollar.valueOf(12.49)))
+                .add(new TaxFreeProduct("chocolate bar", Dollar.valueOf(0.85)))
+                .build());
+
+        String actualSummary = checkout.getSummary();
+
+        String expectedProducts =
+                "1 book: 12.49\n" +
+                "1 chocolate bar: 0.85\n";
+        String expectedTotal = "Total: 13.34";
+        assertTrue(actualSummary.contains(expectedProducts));
+        assertTrue(actualSummary.contains(expectedTotal));
+    }
 }

@@ -18,7 +18,7 @@ public class SimpleCheckout implements Checkout {
         if (!bag.isEmpty()) {
             return  bag.getProductDescriptions() + "\n" +
                     "Sales Taxes: 0\n" +
-                    "Total: 28.98\n";
+                    "Total: " + bag.getTotal().toString();
         }
 
         return "your bag is empty! Please fill it before checkout";
