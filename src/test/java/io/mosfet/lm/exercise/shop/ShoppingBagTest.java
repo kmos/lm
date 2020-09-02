@@ -108,4 +108,17 @@ class ShoppingBagTest {
         assertEquals(Dollar.valueOf(5.1), actualTotal);
     }
 
+    @Test
+    @DisplayName("given a bag with two equal products, when getting the total, return the right sum of them")
+    void givenABagWithTwoEqualProducts_whenGettingTheTotal_returnTheRightValue() {
+        Bag shoppingBag = new ShoppingBag.Builder()
+                .add(new TaxFreeProduct("book", Dollar.valueOf(1.1)))
+                .add(new TaxFreeProduct("book", Dollar.valueOf(1.1)))
+                .build();
+
+        Money actualTotal = shoppingBag.getTotal();
+
+        assertEquals(Dollar.valueOf(2.2), actualTotal);
+    }
+
 }
