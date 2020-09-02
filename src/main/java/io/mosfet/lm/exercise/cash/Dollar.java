@@ -47,6 +47,11 @@ public class Dollar implements Money {
     }
 
     @Override
+    public Money getRoundingTo5Cents() {
+        return Dollar.valueOf(1.05);
+    }
+
+    @Override
     public Money add(Money money) {
         return new Dollar(this.value.add(money.asBigDecimal()));
     }

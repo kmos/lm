@@ -89,4 +89,20 @@ class DollarTest {
         }
 
     }
+
+    @Nested
+    @DisplayName("when asking for rounding")
+    class whenRoundingTheValue {
+
+        @Test
+        @DisplayName("given a dollar with parameters, when asking for rounding, then return it rounded to nearest 5 cents")
+        void givenDollarWithParameters_whenAskingForRounding_thenReturnItRounded() {
+            Money money = Dollar.valueOf(1.03);
+
+            Money actualMoney = money.getRoundingTo5Cents();
+
+            assertEquals(Dollar.valueOf(1.05), actualMoney);
+        }
+    }
+
 }

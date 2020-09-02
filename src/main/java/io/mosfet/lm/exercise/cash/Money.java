@@ -13,4 +13,6 @@ public interface Money {
     Money multiply(Integer value);
 
     Money multiply(BigDecimal value);
+
+    Money getRoundingTo5Cents();
 }
