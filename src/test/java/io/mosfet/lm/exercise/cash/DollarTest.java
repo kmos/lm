@@ -55,4 +55,11 @@ class DollarTest {
         Money actualMoney = new Dollar(1.11411);
         assertEquals(1.11, actualMoney.asDouble());
     }
+
+    @Test
+    @DisplayName("given two different dollars, when doing the sum, then return the result of the addition")
+    void givenTwoDifferentDollars_whenDoingTheSum_thenReturnTheResultOfTheSum() {
+        Money actualSum = new Dollar(1.11).add(new Dollar(1.15));
+        assertEquals(new Dollar(2.16), actualSum);
+    }
 }
