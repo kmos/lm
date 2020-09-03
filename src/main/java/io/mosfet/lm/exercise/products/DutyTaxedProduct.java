@@ -32,7 +32,11 @@ public class DutyTaxedProduct implements Product {
 
     @Override
     public String getDescription() {
-        return null;
+        return "imported " + product.getDescription();
     }
 
+    @Override
+    public String toString() {
+        return "imported " + product.getDescription() + ": " + getCost();
+    }
 }

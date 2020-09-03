@@ -37,4 +37,28 @@ class DutyTaxedProductTest {
         assertEquals(Dollar.valueOf(32.19), actualCost);
     }
 
+    @Test
+    @DisplayName("given an Imported product like alcohol, when getting the description, then apply import label")
+    void givenAnImportedProductAlcohol_whenGettingTheDescription_thenApplyTheImportLabel() {
+        String actualDescription = ALCOHOL.getDescription();
+
+        assertEquals("imported bottle of alcohol", actualDescription);
+    }
+
+    @Test
+    @DisplayName("given an Imported product like chocolate, when getting the description, then apply import label")
+    void givenAnImportedProduct_whenGettingTheDescription_thenApplyTheImportLabel() {
+        String actualDescription = CHOCOLATE.getDescription();
+
+        assertEquals("box of chocolates", actualDescription);
+    }
+
+    @Test
+    @DisplayName("given an Imported product like chocolate, when getting the description, then apply import label")
+    void givenAnImportedProductPerfume_whenGettingTheDescription_thenApplyTheImportLabel() {
+        String actualDescription = PERFUME.getDescription();
+
+        assertEquals("bottle of perfume", actualDescription);
+    }
+
 }
