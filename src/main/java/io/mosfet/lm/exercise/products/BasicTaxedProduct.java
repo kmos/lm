@@ -20,7 +20,7 @@ public class BasicTaxedProduct implements Product {
 
     @Override
     public Money getFreeTaxCost() {
-        return product.getCost();
+        return product.getFreeTaxCost();
     }
 
     @Override
