@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 public class DutyTaxedProduct implements Product {
 
     private final Product product;
-    private final BigDecimal IMPORT_TAX = BigDecimal.valueOf(0.05).setScale(2, RoundingMode.UP);
+    private static final BigDecimal IMPORT_TAX = BigDecimal.valueOf(0.05).setScale(2, RoundingMode.UP);
 
     public DutyTaxedProduct(Product product) {
         this.product = product;
