@@ -31,8 +31,7 @@ class ItemTest {
     void givenATaxedItemLikePerfume_whenGettingTheTaxes_returnIt() {
         Item actualItem = new Item(new BasicTaxedProduct(new TaxFreeProduct("perfume", Dollar.valueOf(10.02))), 1);
 
-        assertTrue(actualItem.getTaxes().isPresent());
-        assertEquals(Dollar.valueOf(1.0), actualItem.getTaxes().get());
+        assertEquals(Dollar.valueOf(1.0), actualItem.getTaxes());
     }
 
     @Test
@@ -40,16 +39,7 @@ class ItemTest {
     void givenATaxedItemLikeMusicCD_whenGettingTheTaxes_returnIt() {
         Item actualItem = new Item(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(20.02))), 1);
 
-        assertTrue(actualItem.getTaxes().isPresent());
-        assertEquals(Dollar.valueOf(2.0), actualItem.getTaxes().get());
-    }
-
-    @Test
-    @DisplayName("given a not taxed item, when getting the taxes, return it")
-    void givenANotTaxedItemLikeMilk_whenGettingTheTaxes_returnIt() {
-        Item actualItem = new Item(new TaxFreeProduct("milk", Dollar.valueOf(1.02)), 1);
-
-        assertFalse(actualItem.getTaxes().isPresent());
+        assertEquals(Dollar.valueOf(2.0), actualItem.getTaxes());
     }
 
 

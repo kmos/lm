@@ -4,7 +4,7 @@ import io.mosfet.lm.exercise.cash.Money;
 
 import java.math.BigDecimal;
 
-public class BasicTaxedProduct implements TaxedProduct {
+public class BasicTaxedProduct implements Product {
 
     public static final BigDecimal BASIC_TAX = BigDecimal.valueOf(0.1);
     private final TaxFreeProduct product;
