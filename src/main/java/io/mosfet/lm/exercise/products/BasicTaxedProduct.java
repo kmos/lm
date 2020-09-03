@@ -15,7 +15,12 @@ public class BasicTaxedProduct implements Product {
 
     @Override
     public Money getCost() {
-        return product.getCost().add(product.getCost().multiply(BASIC_TAX));
+        return product.getFreeTaxCost().add(product.getFreeTaxCost().multiply(BASIC_TAX).getRoundingTo5Cents());
+    }
+
+    @Override
+    public Money getFreeTaxCost() {
+        return product.getCost();
     }
 
     @Override
