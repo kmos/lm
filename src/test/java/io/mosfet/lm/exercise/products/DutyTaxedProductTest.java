@@ -50,7 +50,7 @@ class DutyTaxedProductTest {
     void givenAnImportedProduct_whenGettingTheDescription_thenApplyTheImportLabel() {
         String actualDescription = CHOCOLATE.getDescription();
 
-        assertEquals("box of chocolates", actualDescription);
+        assertEquals("imported box of chocolates", actualDescription);
     }
 
     @Test
@@ -58,7 +58,31 @@ class DutyTaxedProductTest {
     void givenAnImportedProductPerfume_whenGettingTheDescription_thenApplyTheImportLabel() {
         String actualDescription = PERFUME.getDescription();
 
-        assertEquals("bottle of perfume", actualDescription);
+        assertEquals("imported bottle of perfume", actualDescription);
+    }
+
+    @Test
+    @DisplayName("given an Imported product like alcohol, when getting the taxes, then return it correctly")
+    void givenAnImportedProductAlcohol_whenGettingTheTaxes_thenReturnItCorrectly() {
+        Money actualTaxes = ALCOHOL.getTaxes();
+
+        assertEquals(Dollar.valueOf(4.20), actualTaxes);
+    }
+
+    @Test
+    @DisplayName("given an Imported product like chocolate, when getting the taxes, then return it correctly")
+    void givenAnImportedProduct_whenGettingTheTaxes_thenReturnItCorrectly() {
+        Money actualTaxes = CHOCOLATE.getTaxes();
+
+        assertEquals(Dollar.valueOf(0.50), actualTaxes);
+    }
+
+    @Test
+    @DisplayName("given an Imported product like chocolate, when getting the taxes, then return it correctly")
+    void givenAnImportedProductPerfume_whenGettingTheTaxes_thenReturnItCorrectly() {
+        Money actualTaxes = PERFUME.getTaxes();
+
+        assertEquals(Dollar.valueOf(7.13), actualTaxes);
     }
 
 }

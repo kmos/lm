@@ -27,7 +27,7 @@ public class DutyTaxedProduct implements Product {
 
     @Override
     public Money getTaxes() {
-        return null;
+        return product.getTaxes().add(product.getFreeTaxCost().multiply(IMPORT_TAX));
     }
 
     @Override
