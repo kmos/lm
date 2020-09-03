@@ -5,6 +5,8 @@ import io.mosfet.lm.exercise.cash.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TaxFreeProductTest {
@@ -15,7 +17,7 @@ class TaxFreeProductTest {
         Product product = new TaxFreeProduct("book", Dollar.valueOf(1.01));
         Money actualMoney = product.getCost();
 
-        assertEquals(1.01, actualMoney.doubleValue());
+        assertEquals(BigDecimal.valueOf(1.01), actualMoney.asBigDecimal());
     }
 
     @Test

@@ -23,11 +23,6 @@ public class Dollar implements Money {
     }
 
     @Override
-    public double doubleValue() {
-        return value.doubleValue();
-    }
-
-    @Override
     public BigDecimal asBigDecimal() {
         return value;
     }
@@ -35,11 +30,6 @@ public class Dollar implements Money {
     @Override
     public String toString() {
         return value.toPlainString();
-    }
-
-    @Override
-    public Money multiply(Integer value) {
-        return multiply(BigDecimal.valueOf(value));
     }
 
     @Override

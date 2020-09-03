@@ -3,6 +3,8 @@ package io.mosfet.lm.exercise.shop;
 import io.mosfet.lm.exercise.cash.Money;
 import io.mosfet.lm.exercise.products.Product;
 
+import java.math.BigDecimal;
+
 public class Item {
     private final Product product;
     private final Integer quantity;
@@ -20,16 +22,16 @@ public class Item {
         return quantity;
     }
 
-    @Override
-    public String toString() {
-        return quantity + " " + product.toString();
+    public Money getTaxes() {
+        return product.getTaxes().multiply(BigDecimal.valueOf(quantity));
     }
 
     public Money getTotal() {
-        return product.getCost().multiply(quantity);
+        return product.getCost().multiply(BigDecimal.valueOf(quantity));
     }
 
-    public Money getTaxes() {
-        return product.getTaxes().multiply(quantity);
+    @Override
+    public String toString() {
+        return quantity + " " + product.toString();
     }
 }
