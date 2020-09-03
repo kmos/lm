@@ -31,6 +31,5 @@ class AcceptanceTest {
                 "Sales Taxes: 1.50\n" +
                 "Total: 29.83";
         assertEquals(expectedSummary, actualSummary);
-
     }
 }

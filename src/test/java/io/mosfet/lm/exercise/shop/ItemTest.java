@@ -42,5 +42,28 @@ class ItemTest {
         assertEquals(Dollar.valueOf(2.0), actualItem.getTaxes());
     }
 
+    @Test
+    @DisplayName("given a taxed product, when getting toString, return it formatted")
+    void givenAProduct_whenGettingToString_returnItFormatted() {
+        Item actualItem = new Item(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(20.02))), 1);
 
+        assertEquals("1 music CD: 22.02", actualItem.toString());
+    }
+
+    @Test
+    @DisplayName("given a tax free product, when getting toString, return it formatted")
+    void givenTwoProductTaxFree_whenGettingToString_returnItFormatted() {
+        Item actualItem = new Item(new TaxFreeProduct("music CD", Dollar.valueOf(20.02)), 2);
+
+        assertEquals("2 music CD: 40.04", actualItem.toString());
+    }
+
+    @Test
+    @DisplayName("given two taxed product, when getting toString, return it formatted")
+    void givenTwoProductTaxed_whenGettingToString_returnItFormatted() {
+        Item actualItem = new Item(new BasicTaxedProduct(new TaxFreeProduct("music CD", Dollar.valueOf(20.02))), 2);
+
+        assertEquals("2 music CD: 44.04", actualItem.toString());
+
+    }
 }

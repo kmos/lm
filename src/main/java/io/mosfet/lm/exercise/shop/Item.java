@@ -32,6 +32,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return quantity + " " + product.toString();
+        return quantity + " " + product.getDescription() + ": " + getTotal();
     }
 }
