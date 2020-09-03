@@ -3,12 +3,11 @@ package io.mosfet.lm.exercise.products;
 import io.mosfet.lm.exercise.cash.Money;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class DutyTaxedProduct implements Product {
 
     private final Product product;
-    private static final BigDecimal IMPORT_TAX = BigDecimal.valueOf(0.05).setScale(2, RoundingMode.UP);
+    private static final BigDecimal IMPORT_TAX = BigDecimal.valueOf(0.05);
 
     public DutyTaxedProduct(Product product) {
         this.product = product;
