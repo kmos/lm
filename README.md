@@ -1,58 +1,56 @@
-# exercise
+# Sales Taxes
 
-One Paragraph of project description goes here
+a small coding challenge about sales and taxes.
+
+## Problem
+
+Basic sales tax is applicable at a rate of 10% on all goods, except books, food, and medical products that are exempt. Import duty is an additional sales tax applicable on all imported goods at a rate of 5%, with no exemptions.
+
+When I purchase items I receive a receipt which lists the name of all the items and their price (including tax), finishing with the total cost of the items, and the total amounts of sales taxes paid. The rounding rules for sales tax are that for a tax rate of n%, a shelf price of p contains (np/100 rounded up to the nearest 0.05) amount of sales tax.
 
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+### input
 
-
-What things you need to install the software and how to install them
-
+Input 1:
 ```
-Give examples
-```
-
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+1 book at 12.49
+1 music CD at 14.99
+1 chocolate bar at 0.85
 ```
 
-And repeat
-
+Input 2:
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
-You can run tests using
-
-```
-mvn clean verify
+1 imported box of chocolates at 10.00
+1 imported bottle of perfume at 47.50
 ```
 
+### output
 
-Explain what these tests test and why
-
+Output 1:
 ```
-Give an example
+1 book : 12.49
+1 music CD: 16.49
+1 chocolate bar: 0.85
+Sales Taxes: 1.50
+Total: 29.83
 ```
 
+Output 2:
+```
+1 imported box of chocolates: 10.50
+1 imported bottle of perfume: 54.65
+Sales Taxes: 7.65
+Total: 65.15
+```
 
-Add additional notes about how to deploy this on a live system
-
+## Requirements
 
 * [Maven](https://maven.apache.org/) - Dependency Management
+* JDK >= 11
 
+## Author
 
-* **Giovanni Panice** - *BMC Software* - [mosfet.io](https://mosfet.io)
-
-See also the list of [contributors](CONTRIBUTORS.md) who participated in this project.
+* **Giovanni Panice** - [mosfet.io](https://mosfet.io)
 
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
