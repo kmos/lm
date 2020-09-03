@@ -16,18 +16,23 @@ public class DutyTaxedProduct implements Product {
 
     @Override
     public Money getCost() {
-        Money multiply = product.getFreeTaxCost().multiply(IMPORT_TAX);
-        return product.getFreeTaxCost().add(multiply.add(product.getTaxes()).getRoundingTo5Cents());
+        return product.getFreeTaxCost()
+                .add(product.getFreeTaxCost()
+                        .multiply(IMPORT_TAX)
+                        .add(product.getTaxes())
+                        .getRoundingTo5Cents());
     }
 
     @Override
     public Money getFreeTaxCost() {
-        return product.getCost();
+        return product.getFreeTaxCost();
     }
 
     @Override
     public Money getTaxes() {
-        return product.getTaxes().add(product.getFreeTaxCost().multiply(IMPORT_TAX));
+        return product.getTaxes()
+                .add(product.getFreeTaxCost()
+                        .multiply(IMPORT_TAX));
     }
 
     @Override
