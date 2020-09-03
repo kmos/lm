@@ -9,33 +9,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DutyTaxedProductTest {
 
-    @Test
-    @DisplayName("given an Imported prodcut, when getting the cost, then apply taxes for duty product")
-    void givenAnImportedProduct_whenGettingTheCost_thenApplyTaxesForDutyProduct() {
-        Product product = new DutyTaxedProduct(new TaxFreeProduct("box of chocolates", Dollar.valueOf(10.00)));
+    private DutyTaxedProduct CHOCOLATE = new DutyTaxedProduct(new TaxFreeProduct("box of chocolates", Dollar.valueOf(10.00)));
+    private DutyTaxedProduct PERFUME = new DutyTaxedProduct(new BasicTaxedProduct(new TaxFreeProduct("bottle of perfume", Dollar.valueOf(47.50))));
+    private DutyTaxedProduct ALCOHOL = new DutyTaxedProduct(new BasicTaxedProduct(new TaxFreeProduct("bottle of alcohol", Dollar.valueOf(27.99))));
 
-        Money actualCost = product.getCost();
+    @Test
+    @DisplayName("given an Imported product, when getting the cost, then apply taxes for duty product")
+    void givenAnImportedProduct_whenGettingTheCost_thenApplyTaxesForDutyProduct() {
+        Money actualCost = CHOCOLATE.getCost();
 
         assertEquals(Dollar.valueOf(10.50), actualCost);
     }
 
     @Test
-    @DisplayName("given an Imported prodcut, when getting the cost, then apply taxes for duty product")
-    void givenAnImportedProductPerfum_whenGettingTheCost_thenApplyTaxesForDutyProduct() {
-        Product product = new DutyTaxedProduct(new BasicTaxedProduct(new TaxFreeProduct("bottle of perfume", Dollar.valueOf(47.50))));
-
-        Money actualCost = product.getCost();
+    @DisplayName("given an Imported product like perfume, when getting the cost, then apply taxes for duty product")
+    void givenAnImportedProductLikePerfume_whenGettingTheCost_thenApplyTaxesForDutyProduct() {
+        Money actualCost = PERFUME.getCost();
 
         assertEquals(Dollar.valueOf(54.65), actualCost);
     }
 
     @Test
-    @DisplayName("given an Imported prodcut, when getting the cost, then apply taxes for duty product")
-    void givenAnImportedProductPerfm_whenGettingTheCost_thenApplyTaxesForDutyProduct() {
-        Product product = new DutyTaxedProduct(new BasicTaxedProduct(new TaxFreeProduct("bottle of perfume", Dollar.valueOf(27.99))));
-
-        Money actualCost = product.getCost();
+    @DisplayName("given an Imported product like alcohol, when getting the cost, then apply taxes for duty product")
+    void givenAnImportedProductAlcohol_whenGettingTheCost_thenApplyTaxesForDutyProduct() {
+        Money actualCost = ALCOHOL.getCost();
 
         assertEquals(Dollar.valueOf(32.19), actualCost);
     }
+
 }
