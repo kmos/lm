@@ -1,4 +1,5 @@
 # Sales Taxes
+[![Build Status](https://travis-ci.org/kmos/lm.svg?branch=master)](https://travis-ci.org/kmos/lm)
 
 a small coding challenge about sales and taxes.
 
