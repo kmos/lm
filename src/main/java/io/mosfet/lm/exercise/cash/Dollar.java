@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Dollar implements Money {
-    public static final BigDecimal FIVE_CENTS = BigDecimal.valueOf(0.05);
+    private static final BigDecimal FIVE_CENTS = BigDecimal.valueOf(0.05);
     private static final int SCALE = 2;
     private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 

@@ -24,6 +24,11 @@ public class TaxFreeProduct implements Product {
     }
 
     @Override
+    public Money getFreeTaxCost() {
+        return cost;
+    }
+
+    @Override
     public Money getTaxes() {
         return Dollar.valueOf(0);
     }

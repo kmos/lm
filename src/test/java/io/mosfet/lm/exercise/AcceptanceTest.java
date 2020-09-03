@@ -2,6 +2,7 @@ package io.mosfet.lm.exercise;
 
 import io.mosfet.lm.exercise.cash.Dollar;
 import io.mosfet.lm.exercise.products.BasicTaxedProduct;
+import io.mosfet.lm.exercise.products.DutyTaxedProduct;
 import io.mosfet.lm.exercise.products.TaxFreeProduct;
 import io.mosfet.lm.exercise.shop.Checkout;
 import io.mosfet.lm.exercise.shop.ShoppingBag;
@@ -32,4 +33,45 @@ class AcceptanceTest {
                 "Total: 29.83";
         assertEquals(expectedSummary, actualSummary);
     }
+
+    @Test
+    @DisplayName("given a set of imported products, when getting the summary during checkout process, then return descriptions taxes and total")
+    void givenASetOfImportedProducts_whenGettingTheSummaryCheckout_thenReturnDescriptionsTaxesAndTotal() {
+        Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
+                .add(new DutyTaxedProduct(new TaxFreeProduct("box of chocolates", Dollar.valueOf(10.00))))
+                .add(new DutyTaxedProduct(new BasicTaxedProduct(new TaxFreeProduct("bottle of perfume", Dollar.valueOf(47.50)))))
+                .build());
+
+        String actualSummary = checkout.getSummary();
+
+        String expectedSummary =
+                "1 imported box of chocolates: 10.50\n" +
+                        "1 imported bottle of perfume: 54.65\n" +
+                        "Sales Taxes: 7.65\n" +
+                        "Total: 65.15";
+        assertEquals(expectedSummary, actualSummary);
+    }
+
+    @Test
+    @DisplayName("given a set of mixed products, when getting the summary during checkout process, then return descriptions taxes and total")
+    void givenASetOfMixedProducts_whenGettingTheSummaryCheckout_thenReturnDescriptionsTaxesAndTotal() {
+        Checkout checkout = new SimpleCheckout(new ShoppingBag.Builder()
+                .add(new DutyTaxedProduct(new BasicTaxedProduct(new TaxFreeProduct("bottle of perfume", Dollar.valueOf(27.99)))))
+                .add(new BasicTaxedProduct(new TaxFreeProduct("bottle of perfume", Dollar.valueOf(18.99))))
+                .add(new TaxFreeProduct("packet of headache pills", Dollar.valueOf(9.75)))
+                .add(new DutyTaxedProduct(new TaxFreeProduct("box of chocolates", Dollar.valueOf(11.25))))
+                .build());
+
+        String actualSummary = checkout.getSummary();
+
+        String expectedSummary =
+                "1 imported bottle of perfume: 32.19\n" +
+                        "1 bottle of perfume: 20.89\n" +
+                        "1 packet of headache pills: 9.75\n" +
+                        "1 imported box of chocolates: 11.85\n" +
+                        "Sales Taxes: 6.70\n" +
+                        "Total: 74.68";
+        assertEquals(expectedSummary, actualSummary);
+    }
+
 }
